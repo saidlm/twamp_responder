@@ -11,7 +11,7 @@ services:
     cap_add:
       - NET_ADMIN
     volumes:
-      - twamp:/config
+      - twamp:/config:ro
     network_mode: host
     restart: unless-stopped
 
@@ -27,7 +27,7 @@ services:
       - 862:862/tcp
       - 18770:18770/udp
     volumes:
-      - twamp:/config
+      - twamp:/config:ro
     networks:
       twamp:
         ipv4_address: 172.20.0.2
