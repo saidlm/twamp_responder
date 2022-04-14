@@ -1,0 +1,35 @@
+FROM debian:buster
+
+MAINTAINER Martin Saidl, martin.saidl@tone.cz
+
+ENV DATA_DIR=/config
+
+RUN apt-get update \
+    && apt-get -y upgrade \
+    && apt-get install --no-install-recommends -y \
+        ca-certificates \
+        gnupg2 \
+        curl \ 
+        wget \
+    && apt-get -y clean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+RUN curl http://downloads.perfsonar.net/debian/perfsonar-official.gpg.key | apt-key add - \
+    && curl -o /etc/apt/sources.list.d/perfsonar-release.list http://downloads.perfsonar.net/debian/perfsonar-release.list \
+    && apt-get -y update \
+    && apt-get install --no-install-recommends -y \
+        supervisor \
+        twamp-server \
+    && apt-get -y clean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+COPY conf/supervisor.conf /etc/supervisor.conf
+COPY conf/twamp-server.conf /etc/twamp-server
+
+COPY scripts/entrypoint-twampd.sh /sbin/entrypoint.sh
+RUN chmod +x /sbin/entrypoint.sh
+
+EXPOSE 18770/udp 862/tcp
+VOLUME ["${DATA_DIR}"]
+
+ENTRYPOINT ["/sbin/entrypoint.sh"]

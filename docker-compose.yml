@@ -1,0 +1,49 @@
+services:
+  firewall:
+    build:
+      context: .
+      dockerfile: Dockerfile.firewall
+    container_name: twamp-firewall
+    image: twamp-firewall:latest
+    environment:
+      CHAIN: TWAMP
+      IP: 172.20.0.2
+    cap_add:
+      - NET_ADMIN
+    volumes:
+      - twamp:/config
+    network_mode: host
+    restart: unless-stopped
+
+  twamp:
+    build:
+      context: .
+      dockerfile: Dockerfile.twampd
+    container_name: twamp-responder
+    image: twamp-responder:latest
+    depends_on:
+      - "firewall"
+    ports:
+      - 862:862/tcp
+      - 18770:18770/udp
+    volumes:
+      - twamp:/config
+    networks:
+      twamp:
+        ipv4_address: 172.20.0.2
+    restart: unless-stopped
+
+networks:
+  twamp:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.20.0.0/24
+volumes:
+  twamp:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/pi/containers/twamp-responder
+      o: bind
