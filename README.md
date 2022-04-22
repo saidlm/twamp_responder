@@ -17,7 +17,7 @@ docker compose build
 ## Configuration
 * The fist step is to change volume location defined in docker-compose.yml
 * Default configuration files will be automaticaly populated during first run 
-* Security can be defined by to files host.allow and host.deny. Only lines including IP (x.x.x.x) or subnett (x.x.x.x/y) are relevant for configuration. Everything else will be skipped.
+* Security can be defined by to files hosts.allow and hosts.deny. Only lines including IP (x.x.x.x) or subnett (x.x.x.x/y) are relevant for configuration. Everything else will be skipped.
 
 ## Running
 Creating new containers and start:
