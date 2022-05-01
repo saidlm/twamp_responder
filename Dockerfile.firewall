@@ -7,7 +7,7 @@ ENV DATA_DIR=/config
 ENV CHAIN=TWAMP
 ENV IP=172.20.0.2
 
-RUN apk add --no-cache iptables
+RUN apk add --no-cache iptables bash
 
 COPY scripts/firewall.sh /sbin/firewall.sh
 RUN chmod +x /sbin/firewall.sh

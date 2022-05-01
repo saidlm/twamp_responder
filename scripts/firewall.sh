@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # TWAMP-Responder firewall script v 1.1 
 # (c) 2022 Martin Saidl@tone.cz
