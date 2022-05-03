@@ -24,7 +24,7 @@ RUN curl http://downloads.perfsonar.net/debian/perfsonar-official.gpg.key | apt-
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 COPY conf/supervisor.conf /etc/supervisor.conf
-COPY conf/twamp-server.conf /etc/twamp-server
+COPY conf/twamp-server.conf /etc/twamp-server/twamp-server.conf
 
 COPY scripts/entrypoint-twampd.sh /sbin/entrypoint.sh
 RUN chmod +x /sbin/entrypoint.sh

@@ -12,7 +12,6 @@ create_twamp_dir() {
   if [ ! -f ${DATA_DIR}/twamp-server.limits ]; then
     cp /etc/twamp-server/twamp-server.limits ${DATA_DIR}/
   fi
-
 }
 
 create_twamp_dir

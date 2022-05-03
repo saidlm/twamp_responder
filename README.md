@@ -49,5 +49,5 @@ The responder is by default configured to uses two type of network ports. It can
 The default configuration is:
 | Port Number | Description
 | :-- | :--
-| tcp/882 | Control port
-| udp/18770 | Test port
+| **tcp/882** | Control port
+| **udp/18770** | Test port
