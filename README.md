@@ -20,7 +20,7 @@ docker compose build
 * Security can be defined by to files hosts.allow and hosts.deny. Only lines including IP (x.x.x.x) or subnet (x.x.x.x/y) are relevant for the configuration. Everything else in these files will be skipped. 
 
 ### Configuration files
-All configuration files are in one folder located on docker volume. The volume is shared by both containers. The both containers have read-only acces to it
+All the configuration files are in one folder located on docker volume. The volume is shared by both containers. The both containers have read-only acces to the voleme.
 
 | File Name | Description 
 | :-- | :--
@@ -30,7 +30,7 @@ All configuration files are in one folder located on docker volume. The volume i
 | **hosts.deny** | List of IP addresses od subnets which are block by firewall to access the responder
 
 ### Firewall configuration
-The default policy for TWAMP Responder is DENY. If no hosts.allow is define the access to responder is completely block by firewall.
+The default firewall policy for TWAMP Responder is DENY. If no hosts.allow fie is define or contains no entry then the access to responder is completely block by firewall.
 
 ## Running
 Creating new containers and start:
@@ -43,7 +43,7 @@ docker compose stop
 ```
 
 ### Network ports
-The responder is by default configured to uses two type of network ports. It can configured in twamp-server.conf.
+The responder is by default configured to uses two type of network ports. It can be configured in twamp-server.conf.
 
 The default configuration is:
 | Port Number | Description
