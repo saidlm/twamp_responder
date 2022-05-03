@@ -1,10 +1,10 @@
 # TWAMP Responder
 The aim of the project is to create docker based microservice chain providing twamp responder with some kind of security level. 
-The whole solution is based on docker without necessity to any firewall confiruration of host level.
+The whole solution is based on docker without necessity to have any firewall confiruration of host level.
 The twamp responder itself is based on perfSONAR project. Additional security leves is done by using standard linux kernel firewall mannaged by iptables program.
 
 ## Prerequisits
-Installation of Docker with compose plugin is necessary on host machine.
+Installation of Docker with docker compose plugin is necessary on host machine.
 
 ## Building
 Almost everything is automated via docker compose. You have to download the project and run docker compose build.
@@ -16,8 +16,21 @@ docker compose build
 
 ## Configuration
 * The fist step is to change volume location defined in docker-compose.yml
-* Default configuration files will be automaticaly populated during first run 
-* Security can be defined by to files hosts.allow and hosts.deny. Only lines including IP (x.x.x.x) or subnett (x.x.x.x/y) are relevant for configuration. Everything else will be skipped.
+* Default configuration files will be automaticaly populated during the first run 
+* Security can be defined by to files hosts.allow and hosts.deny. Only lines including IP (x.x.x.x) or subnet (x.x.x.x/y) are relevant for the configuration. Everything else in these files will be skipped. 
+
+### Configuration files
+All configuration files are in one folder located on docker volume. The volume is shared by both containers. The both containers have read-only acces to it
+
+| File Name | Description 
+| :-- | :--
+| **twamp-server.conf** | The main TWAMP deamon configuration
+| **twamp-server.limits** | Policy definition for the twampd process
+| **hosts.allow** | List of IP addresses od subnets which are allowed by firewall to use the responder
+| **hosts.deny** | List of IP addresses od subnets which are block by firewall to access the responder
+
+### Firewall configuration
+The default policy for TWAMP Responder is DENY. If no hosts.allow is define the access to responder is completely block by firewall.
 
 ## Running
 Creating new containers and start:
@@ -28,3 +41,12 @@ As soon as firewall container received TERM signal it automaticaly removes all r
 ```
 docker compose stop
 ```
+
+### Network ports
+The responder is by default configured to uses two type of network ports. It can configured in twamp-server.conf.
+
+The default configuration is:
+| Port Number | Description
+| :-- | :--
+| tcp/882 | Control port
+| udp/18770 | Test port
