@@ -43,7 +43,7 @@ docker compose stop
 ```
 
 ### Network ports
-The responder is by default configured to uses two type of network ports. It can be configured in twamp-server.conf.
+The responder is by default configured to uses two type of network ports. It can be configured in twamp-server.conf. If the default configuration of twampd is changed it is neccessary to change also expose ports in Dockerfile.twamp and port forwarding configuration docker-compose.yml
 
 The default configuration is:
 | Port Number | Description
