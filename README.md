@@ -21,7 +21,7 @@ docker compose build
 * Security can be defined by to files hosts.allow and hosts.deny. Only lines including IP (x.x.x.x) or subnet (x.x.x.x/y) are relevant for the configuration. Everything else in these files will be skipped. 
 
 ### Configuration files
-All the configuration files are in one folder located on docker volume. The volume is shared by both containers. The both containers have read-only acces to the volume.
+All the configuration files are in one folder located on docker volume. The volume is shared by both containers.
 
 | File Name | Description 
 | :-- | :--
