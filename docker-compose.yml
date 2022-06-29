@@ -4,6 +4,7 @@ services:
       context: .
       dockerfile: Dockerfile.firewall
     container_name: twamp-firewall
+    hostname: twamp-firewall
     image: twamp-firewall:latest
     environment:
       CHAIN: TWAMP
@@ -20,6 +21,7 @@ services:
       context: .
       dockerfile: Dockerfile.twampd
     container_name: twamp-responder
+    hostname: twamp-responder
     image: twamp-responder:latest
     depends_on:
       - "firewall"
