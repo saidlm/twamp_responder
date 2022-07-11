@@ -34,7 +34,7 @@ All the configuration files are in one folder located on docker volume. The volu
 The default firewall policy for TWAMP Responder is DENY. If no hosts.allow fie is define or contains no entry then the access to responder is completely blocked by firewall. No new connection from twamp-responder container is allowed due to security reason; all connections have to be originated from outside b y clients.
 
 ## Running
-Creating new containers and start:
+Create new containers and start:
 ```
 docker compose up -d
 ```
