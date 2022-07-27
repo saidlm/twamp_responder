@@ -27,7 +27,7 @@ trap cleanup INT TERM STOP KILL
 
 # Main
 echo "Configuring firewall for TWAMP responder ..."
-echo "TAMP Chain: $CHAIN"
+echo "TWAMP Chain: $CHAIN"
 echo "TWAMP IP: $IP"
 
 echo "Existing $CHAIN rules:"
