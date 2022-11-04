@@ -44,8 +44,8 @@ networks:
         - subnet: 172.20.0.0/24
 volumes:
   twamp:
-    driver: local
-    driver_opts:
-      type: none
-      device: /home/pi/containers/twamp-responder
-      o: bind
+    #    driver: local
+    #    driver_opts:
+    #      type: none
+    #      device: /home/pi/containers/twamp-responder
+    #      o: bind
