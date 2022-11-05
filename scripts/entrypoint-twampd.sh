@@ -12,6 +12,10 @@ create_twamp_dir() {
   if [ ! -f ${DATA_DIR}/twamp-server.limits ]; then
     cp /etc/twamp-server/twamp-server.limits ${DATA_DIR}/
   fi
+
+  if [ ! -f ${DATA_DIR}/host.allow ]; then
+    echo "0.0.0.0/0" > ${DATA_DIR}/hosts.allow
+  fi
 }
 
 create_twamp_dir
