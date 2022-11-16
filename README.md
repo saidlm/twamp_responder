@@ -30,8 +30,10 @@ All the configuration files are in one folder located on docker volume. The volu
 | **hosts.allow** | List of IP addresses od subnets which are allowed by firewall to use the responder
 | **hosts.deny** | List of IP addresses od subnets which are block by firewall to access the responder
 
+If there is no hosts.allow it will create the default one with 0.0.0.0/0 inside automaticaly.
+
 ### Firewall configuration
-The default firewall policy for TWAMP Responder is DENY. If no hosts.allow fie is define or contains no entry then the access to responder is completely blocked by firewall. No new connection from twamp-responder container is allowed due to security reason; all connections have to be originated from outside b y clients.
+The default firewall policy for TWAMP Responder is DENY. If no hosts.allow fie is define or contains no entry then the access to responder is completely blocked by firewall. No new connection from twamp-responder container is allowed due to security reason; all connections have to be originated from outside by clients.
 
 ## Running
 Create new containers and start:
