@@ -1,0 +1,7 @@
+services:
+  firewall:
+    container_name: ${PROBE_PREFIX}twamp-responder-fw
+    hostname: ${PROBE_PREFIX}twamp-responder-fw
+  twamp:
+    container_name: ${PROBE_PREFIX}twamp-responder
+    hostname: ${PROBE_PREFIX}twamp-responder   

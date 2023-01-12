@@ -12,7 +12,7 @@ services:
     cap_add:
       - NET_ADMIN
     volumes:
-      - twamp:/config
+      - twamp-responder:/config
     network_mode: host
     restart: unless-stopped
 
@@ -29,23 +29,18 @@ services:
       - 862:862/tcp
       - 18770:18770/udp
     volumes:
-      - twamp:/config
+      - twamp-responder:/config
     networks:
-      twamp:
+      twamp-responder:
         ipv4_address: 172.20.0.2
     restart: unless-stopped
 
 networks:
-  twamp:
+  twamp-responder:
     driver: bridge
     ipam:
       driver: default
       config:
         - subnet: 172.20.0.0/24
 volumes:
-  twamp:
-    #    driver: local
-    #    driver_opts:
-    #      type: none
-    #      device: /home/pi/containers/twamp-responder
-    #      o: bind
+  twamp-responder:
