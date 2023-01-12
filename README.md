@@ -1,6 +1,6 @@
 # TWAMP Responder
 The aim of the project is to create docker based microservice chain providing twamp responder with some kind of security level. 
-The whole solution is based on docker without necessity to have any firewall confiruration of host level.
+The whole solution is based on docker without necessity to have any firewall confiruration on host level.
 The twamp responder itself is based on perfSONAR project. Additional security leves is done by using standard linux kernel firewall mannaged by iptables program.
 
 ## Prerequisits
@@ -36,9 +36,9 @@ If there is no hosts.allow it will create the default one with 0.0.0.0/0 inside 
 The default firewall policy for TWAMP Responder is DENY. If no hosts.allow fie is define or contains no entry then the access to responder is completely blocked by firewall. No new connection from twamp-responder container is allowed due to security reason; all connections have to be originated from outside by clients.
 
 ## Running
-Create new containers and start:
+Create new containers ,edit docker-compose.override.yml if neccessary and start:
 ```
-docker compose up -d
+PROBE_PREFIX=<prefix> docker compose up -d
 ```
 As soon as firewall container received TERM signal it automaticaly removes all related firewall rules. You can stop the service by
 ```
