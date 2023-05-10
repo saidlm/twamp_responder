@@ -80,7 +80,7 @@ iptables -I FORWARD -j $CHAIN
 echo "done."
 
 while true; do
-  sleep 1 &
+  sleep 10 &
   wait $!
 done
 
